@@ -3,689 +3,1052 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Built Environment PMET Summit 2026</title>
+<title>CutCost AI — AI Order Taking &amp; Quotation Generation for Logistics</title>
+<meta name="description" content="CutCost AI automates order taking and quotation generation for logistics SMEs. Keep your existing systems, start from S$4,499 before GST and save up to S$26,000 a year per AI module.">
+<meta property="og:title" content="CutCost AI — AI now. Cut manpower costs.">
+<meta property="og:description" content="AI app for order taking & quotation generation, built for logistics SMEs. Start low cost. Cut manpower costs. Keep existing systems.">
+<meta property="og:image" content="logistics.jpg">
+<meta name="theme-color" content="#050b1f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23050b1f'/%3E%3Cpath d='M9 22 L16 10 L23 22' stroke='%2322d3ee' stroke-width='3.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #14161f;
-    --ink-soft: #565b6e;
-    --canvas: #f4f5fb;
-    --border: #e3e4ee;
-    --primary: #1d4ed8;
-    --primary-hover: #1a43bd;
-    --primary-soft: #e8edfc;
-    --accent: #f97316;
-    --good: #047857;
-    --good-soft: #e3f8f0;
-    --warn: #b45309;
-    --warn-soft: #fef3e2;
-    --danger: #dc2626;
-    --radius-lg: 18px;
-    --radius-md: 12px;
-    --radius-sm: 8px;
-    --shadow: 0 20px 45px -25px rgba(20, 22, 31, 0.35);
-    --font-display: "Space Grotesk", "Segoe UI", Arial, sans-serif;
+    --bg: #050b1f;
+    --bg-2: #081334;
+    --panel: rgba(14, 30, 72, 0.55);
+    --panel-solid: #0b1a42;
+    --line: rgba(96, 165, 250, 0.22);
+    --line-strong: rgba(96, 165, 250, 0.45);
+    --ink: #eef4ff;
+    --ink-soft: #a9b8d6;
+    --ink-faint: #7386ab;
+    --cyan: #22d3ee;
+    --blue: #3b82f6;
+    --teal: #2dd4bf;
+    --purple: #a78bfa;
+    --pink: #f472b6;
+    --yellow: #facc15;
+    --orange: #fb923c;
+    --red: #f87171;
+    --radius-lg: 20px;
+    --radius-md: 14px;
+    --radius-sm: 10px;
+    --font-display: "Plus Jakarta Sans", "Segoe UI", Arial, sans-serif;
     --font-body: "Inter", "Segoe UI", Arial, sans-serif;
+    --max: 1180px;
   }
+
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1200px 600px at 85% -10%, rgba(59, 130, 246, 0.22), transparent 60%),
+      radial-gradient(900px 500px at -10% 30%, rgba(34, 211, 238, 0.10), transparent 60%),
+      radial-gradient(900px 600px at 110% 80%, rgba(167, 139, 250, 0.12), transparent 60%),
+      var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  .accent { color: var(--cyan); }
+  .grad {
+    background: linear-gradient(90deg, var(--cyan), var(--blue));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* ---------- Header ---------- */
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(5, 11, 31, 0.78);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 20px; }
+  .logo { font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; text-decoration: none; letter-spacing: -0.02em; white-space: nowrap; }
+  .logo span { color: var(--cyan); }
+  .nav-links { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
+  .nav-links a { text-decoration: none; color: var(--ink-soft); font-size: 0.93rem; font-weight: 500; transition: color .15s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-toggle { display: none; background: none; border: 1px solid var(--line-strong); color: var(--ink); border-radius: 10px; width: 42px; height: 42px; cursor: pointer; }
+  .nav-toggle svg { width: 20px; height: 20px; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 0.95rem;
+    text-decoration: none; border: 1px solid transparent; cursor: pointer; font-family: var(--font-body);
+    transition: transform .15s, box-shadow .15s, background .15s;
+  }
+  .btn-primary { background: linear-gradient(90deg, #06b6d4, #3b82f6); color: #fff; box-shadow: 0 10px 30px -10px rgba(34, 211, 238, 0.6); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 14px 34px -10px rgba(34, 211, 238, 0.8); }
+  .btn-ghost { border-color: var(--line-strong); color: var(--ink); background: rgba(255,255,255,0.03); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); }
+  .btn-sm { padding: 9px 18px; font-size: 0.88rem; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 96px 0; position: relative; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan);
+  }
+  .eyebrow::before { content: ""; width: 28px; height: 3px; border-radius: 3px; background: var(--cyan); }
+  .section-head { max-width: 760px; margin-bottom: 48px; }
+  .section-head h2 { font-size: clamp(1.9rem, 3.6vw, 2.75rem); margin-top: 14px; font-weight: 800; }
+  .section-head p { color: var(--ink-soft); margin-top: 14px; font-size: 1.08rem; }
+  .center { text-align: center; margin-left: auto; margin-right: auto; }
+  .center .eyebrow { justify-content: center; }
+
+  .card {
+    background: linear-gradient(180deg, rgba(20, 40, 92, 0.55), rgba(10, 22, 56, 0.55));
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    position: relative;
+  }
+  .icon {
+    width: 56px; height: 56px; border-radius: 50%;
+    display: grid; place-items: center; flex-shrink: 0;
+    border: 2px solid currentColor; color: var(--cyan);
+    box-shadow: 0 0 22px -4px currentColor, inset 0 0 14px -6px currentColor;
+  }
+  .icon svg { width: 26px; height: 26px; }
+  .c-cyan { color: var(--cyan); } .c-teal { color: var(--teal); } .c-purple { color: var(--purple); }
+  .c-blue { color: var(--blue); } .c-yellow { color: var(--yellow); } .c-pink { color: var(--pink); } .c-orange { color: var(--orange); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 72px 0 88px; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+  .hero .tag {
+    display: inline-block; padding: 7px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 600;
+    background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.35); color: var(--cyan);
+  }
+  .hero h1 { font-size: clamp(2.6rem, 6vw, 4.4rem); font-weight: 800; margin-top: 22px; letter-spacing: -0.03em; }
+  .hero h1 .now { color: var(--cyan); }
+  .hero .sub { font-family: var(--font-display); font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 600; margin-top: 16px; color: #cfe0ff; }
+  .hero .lead { color: var(--ink-soft); font-size: 1.08rem; margin-top: 18px; max-width: 540px; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 44px; max-width: 560px; }
+  .hero-stats div { border-left: 3px solid var(--cyan); padding: 2px 0 2px 14px; }
+  .hero-stats div:nth-child(2) { border-color: var(--teal); }
+  .hero-stats div:nth-child(3) { border-color: var(--purple); }
+  .hero-stats strong { display: block; font-family: var(--font-display); font-size: 1.55rem; font-weight: 800; }
+  .hero-stats span { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.35; display: block; }
+
+  .hero-visual { position: relative; }
+  .photo {
+    border-radius: 24px; overflow: hidden; border: 1px solid var(--line-strong);
+    box-shadow: 0 30px 80px -30px rgba(59, 130, 246, 0.6);
+    aspect-ratio: 822 / 372; transform: perspective(1200px) rotateY(-6deg);
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; }
+  .float-card {
+    position: absolute; background: rgba(8, 19, 52, 0.92); border: 1px solid var(--line-strong);
+    border-radius: 16px; padding: 14px 18px; backdrop-filter: blur(8px);
+    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.8);
+  }
+  .float-card small { display: block; color: var(--ink-faint); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .float-card b { font-family: var(--font-display); font-size: 1.25rem; }
+  .fc-1 { left: -20px; bottom: -44px; }
+  .fc-1 b { color: var(--teal); }
+  .fc-2 { right: -8px; top: -36px; }
+  .fc-2 b { color: var(--cyan); }
+  .mini-flow { display: flex; gap: 6px; margin-top: 8px; }
+  .mini-flow i { width: 22px; height: 6px; border-radius: 4px; background: var(--cyan); opacity: .35; animation: pulse 2.4s infinite; }
+  .mini-flow i:nth-child(2) { animation-delay: .3s } .mini-flow i:nth-child(3) { animation-delay: .6s }
+  .mini-flow i:nth-child(4) { animation-delay: .9s } .mini-flow i:nth-child(5) { animation-delay: 1.2s }
+  @keyframes pulse { 0%, 100% { opacity: .25 } 40% { opacity: 1 } }
+  .tagline-strip {
+    margin-top: 76px; padding: 18px 24px; border-radius: var(--radius-md);
+    border: 1px solid var(--line); background: rgba(255,255,255,0.02);
+    display: flex; flex-wrap: wrap; gap: 10px 36px; justify-content: center;
+    font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+  }
+  .tagline-strip span { display: inline-flex; align-items: center; gap: 10px; }
+  .tagline-strip span::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+  .tagline-strip span:nth-child(2)::before { background: var(--teal); box-shadow: 0 0 10px var(--teal); }
+  .tagline-strip span:nth-child(3)::before { background: var(--purple); box-shadow: 0 0 10px var(--purple); }
+
+  /* ---------- Why / How / What ---------- */
+  .whw { display: grid; gap: 18px; }
+  .whw .card { display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; padding: 26px 32px; }
+  .whw .card.k-cyan { border-color: rgba(34, 211, 238, 0.45); }
+  .whw .card.k-teal { border-color: rgba(45, 212, 191, 0.45); background: linear-gradient(180deg, rgba(8, 60, 64, 0.5), rgba(8, 36, 48, 0.5)); }
+  .whw .card.k-purple { border-color: rgba(167, 139, 250, 0.5); background: linear-gradient(180deg, rgba(50, 30, 110, 0.5), rgba(24, 18, 70, 0.5)); }
+  .whw .icon { width: 72px; height: 72px; }
+  .whw .icon svg { width: 34px; height: 34px; }
+  .whw h3 { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; }
+  .whw h3 em { font-style: normal; font-size: 1.6rem; font-weight: 800; margin-right: 10px; }
+  .whw p { color: var(--ink-soft); margin-top: 8px; font-size: 1.04rem; }
+
+  /* ---------- Workflow ---------- */
+  .flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 12px; counter-reset: step; }
+  .flow li {
+    --c: var(--cyan);
+    border: 1px solid color-mix(in srgb, var(--c) 55%, transparent);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--c) 12%, transparent), rgba(8, 19, 52, 0.4));
+    border-radius: var(--radius-md); padding: 18px 12px 18px; position: relative; text-align: center;
+  }
+  .flow li::before {
+    counter-increment: step; content: counter(step);
+    position: absolute; top: -12px; left: -8px; width: 28px; height: 28px; border-radius: 50%;
+    background: var(--c); color: #061024; font-weight: 800; font-size: 0.85rem; display: grid; place-items: center;
+    font-family: var(--font-display);
+  }
+  .flow li:not(:last-child)::after {
+    content: ""; position: absolute; right: -11px; top: 50px; width: 10px; height: 10px;
+    border-top: 2px solid var(--cyan); border-right: 2px solid var(--cyan); transform: rotate(45deg);
+  }
+  .flow .icon { width: 50px; height: 50px; margin: 4px auto 12px; color: var(--c); }
+  .flow .icon svg { width: 22px; height: 22px; }
+  .flow h4 { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--c); font-weight: 800; }
+  .flow p { font-size: 0.8rem; color: var(--ink-soft); margin-top: 8px; line-height: 1.45; }
+  .flow .human { display: inline-block; margin-top: 10px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 8px; border-radius: 999px; background: rgba(251, 146, 60, 0.18); color: var(--orange); }
+
+  /* ---------- Benefits ---------- */
+  .benefits { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 64px; }
+  .benefits .card { padding: 26px 24px; }
+  .benefits .num { font-family: var(--font-display); font-weight: 800; font-size: 0.85rem; opacity: 0.9; }
+  .benefits h4 { font-size: 1.05rem; margin: 16px 0 10px; text-transform: uppercase; letter-spacing: 0.02em; }
+  .benefits p { color: var(--ink-soft); font-size: 0.94rem; }
+  .benefits .icon { margin-bottom: 4px; }
+  .subhead { font-size: clamp(1.5rem, 2.8vw, 2rem); font-weight: 800; margin-top: 72px; }
+
+  /* ---------- Why choose ---------- */
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .why-grid .card { display: flex; flex-direction: column; gap: 14px; }
+  .why-grid .top { display: flex; gap: 16px; align-items: flex-start; }
+  .why-grid h3 { font-size: 1.08rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.01em; line-height: 1.3; }
+  .why-grid h3 .hl { display: block; }
+  .why-grid .desc { color: var(--ink-soft); font-size: 0.95rem; }
+  .checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+  .checks li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; font-size: 0.93rem; color: #d7e3fa; }
+  .checks li::before {
+    content: ""; width: 20px; height: 20px; border-radius: 50%; margin-top: 2px;
+    background: currentColor url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-6.5' stroke='%23061024' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat;
+    color: var(--k, var(--cyan));
+  }
+  .k-yellow { --k: var(--yellow); } .k-pink { --k: var(--pink); } .k-blue { --k: var(--blue); } .k-cyan { --k: var(--cyan); }
+  .why-grid .card.k-yellow { border-color: rgba(250, 204, 21, 0.4); }
+  .why-grid .card.k-pink { border-color: rgba(244, 114, 182, 0.4); }
+  .why-grid .card.k-cyan { border-color: rgba(34, 211, 238, 0.4); }
+  .why-grid .card.k-blue { border-color: rgba(59, 130, 246, 0.5); }
+  .why-grid h3 .hl { color: var(--k); }
+
+  /* ---------- Pricing ---------- */
+  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .plan { padding: 34px; display: flex; flex-direction: column; }
+  .plan.k-cyan { border-color: rgba(34, 211, 238, 0.5); }
+  .plan.k-teal { border-color: rgba(45, 212, 191, 0.5); background: linear-gradient(180deg, rgba(8, 60, 64, 0.45), rgba(8, 30, 44, 0.5)); }
+  .plan .head { display: flex; align-items: center; gap: 16px; }
+  .plan h3 { font-size: 1.35rem; font-weight: 800; }
+  .plan .when { color: var(--ink-soft); font-size: 0.9rem; }
+  .price { margin: 26px 0 6px; font-family: var(--font-display); }
+  .price .amt { font-size: clamp(2.3rem, 4.4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; }
+  .price .per { color: var(--ink-soft); font-size: 1rem; font-weight: 600; margin-left: 4px; }
+  .plan.k-cyan .amt { color: var(--cyan); } .plan.k-teal .amt { color: var(--teal); }
+  .price-alt { color: var(--ink-soft); font-size: 0.95rem; }
+  .price-alt b { color: var(--ink); }
+  .plan ol { margin: 26px 0 0; padding: 22px 0 0; border-top: 1px solid var(--line); list-style: none; counter-reset: item; display: grid; gap: 12px; }
+  .plan ol li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; }
+  .plan ol li::before {
+    counter-increment: item; content: counter(item);
+    width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center;
+    font-weight: 800; font-size: 0.78rem; color: #061024; background: var(--k, var(--cyan));
+  }
+  .plan.k-teal { --k: var(--teal); }
+  .plan li.muted { color: var(--ink-faint); }
+
+  .stages-head { margin: 72px 0 28px; display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
+  .stages-head h3 { font-size: clamp(1.5rem, 2.8vw, 2rem); font-weight: 800; }
+  .stages-head p { color: var(--ink-soft); margin-top: 8px; max-width: 620px; }
+  .stages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .stage { --k: var(--cyan); border-color: color-mix(in srgb, var(--k) 50%, transparent); }
+  .stage.s2 { --k: var(--teal); background: linear-gradient(180deg, rgba(8, 60, 64, 0.45), rgba(8, 30, 44, 0.5)); }
+  .stage.s3 { --k: var(--purple); background: linear-gradient(180deg, rgba(50, 30, 110, 0.45), rgba(24, 18, 70, 0.5)); }
+  .stage .row { display: flex; justify-content: space-between; align-items: center; }
+  .stage .lbl { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; color: var(--k); }
+  .stage .pct { font-weight: 800; font-size: 0.95rem; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--k); color: var(--k); background: color-mix(in srgb, var(--k) 14%, transparent); }
+  .stage h4 { font-size: 1.05rem; margin-top: 6px; font-weight: 700; }
+  .stage .sp { margin-top: 18px; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .stage .sp b { font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; color: var(--k); }
+  .stage .sp small { display: block; color: var(--ink-soft); font-size: 0.86rem; }
+  .stage ul { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; font-size: 0.93rem; color: #d7e3fa; }
+  .stage ul li { padding-left: 18px; position: relative; }
+  .stage ul li::before { content: ""; position: absolute; left: 0; top: 9px; width: 7px; height: 7px; border-radius: 50%; background: var(--k); }
+  .total-bar {
+    margin-top: 18px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px;
+    padding: 22px 30px; border-radius: var(--radius-lg); border: 1px solid var(--line-strong);
+    background: linear-gradient(90deg, rgba(34, 211, 238, 0.10), rgba(59, 130, 246, 0.10));
+  }
+  .total-bar .t { font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; }
+  .total-bar .t b { color: var(--cyan); font-size: 1.9rem; margin: 0 8px 0 14px; }
+  .total-bar .t small { color: var(--ink-soft); font-weight: 600; font-size: 0.95rem; font-family: var(--font-body); }
+  .total-bar .motto { color: var(--ink-soft); font-weight: 600; }
+  .total-bar .motto span { color: var(--ink); }
+
+  /* ---------- Savings ---------- */
+  .savings-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 22px; align-items: stretch; }
+  .calc h3 { font-size: 1.3rem; font-weight: 800; }
+  .calc .hint { color: var(--ink-soft); font-size: 0.92rem; margin-top: 6px; }
+  .field { margin-top: 24px; }
+  .field label { display: flex; justify-content: space-between; font-weight: 600; font-size: 0.95rem; margin-bottom: 10px; }
+  .field label output { font-family: var(--font-display); color: var(--cyan); font-weight: 800; }
+  input[type=range] { width: 100%; accent-color: var(--cyan); height: 28px; }
+  .modules { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+  .modules button {
+    padding: 11px 0; border-radius: 10px; border: 1px solid var(--line-strong); background: rgba(255,255,255,0.03);
+    color: var(--ink); font-weight: 700; font-size: 1rem; cursor: pointer; font-family: var(--font-display);
+  }
+  .modules button[aria-pressed="true"] { background: linear-gradient(90deg, #06b6d4, #3b82f6); border-color: transparent; }
+  .results { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 28px; }
+  .results div { background: rgba(5, 11, 31, 0.55); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 14px 16px; }
+  .results small { color: var(--ink-soft); font-size: 0.8rem; display: block; line-height: 1.35; }
+  .results b { font-family: var(--font-display); font-size: 1.35rem; font-weight: 800; display: block; margin-top: 4px; }
+  .results .big { grid-column: 1 / -1; border-color: rgba(34, 211, 238, 0.5); background: rgba(34, 211, 238, 0.07); }
+  .results .big b { font-size: 2.2rem; color: var(--cyan); }
+  .results .neg { color: var(--red); }
+
+  .kpis { display: grid; gap: 14px; }
+  .kpi { display: flex; gap: 18px; align-items: center; padding: 22px 24px; }
+  .kpi small { color: var(--ink-soft); font-size: 0.88rem; display: block; }
+  .kpi b { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; display: block; line-height: 1.2; }
+  .donut { width: 72px; height: 72px; flex-shrink: 0; }
+
+  .table-wrap { overflow-x: auto; border-radius: var(--radius-md); border: 1px solid var(--line-strong); margin-top: 22px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.93rem; min-width: 560px; }
+  thead th { background: rgba(59, 130, 246, 0.16); text-align: right; padding: 12px 16px; font-weight: 600; font-size: 0.82rem; color: #cfe0ff; }
+  thead th:first-child, tbody td:first-child, tfoot td:first-child { text-align: left; }
+  tbody td, tfoot td { padding: 10px 16px; text-align: right; border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+  tbody tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+  tfoot td { font-weight: 800; font-family: var(--font-display); background: rgba(34, 211, 238, 0.06); font-size: 1.02rem; }
+  td.pos { color: var(--teal); font-weight: 600; }
+  td.neg { color: var(--red); font-weight: 600; }
+  td.hl { color: var(--cyan); font-weight: 800; }
+  td .note { color: var(--ink-faint); font-size: 0.8rem; }
+  details.year1 { margin-top: 22px; }
+  details.year1 summary {
+    cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 10px;
+    font-weight: 600; color: var(--cyan); padding: 10px 0;
+  }
+  details.year1 summary::-webkit-details-marker { display: none; }
+  details.year1 summary::before { content: "+"; width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--cyan); display: grid; place-items: center; font-weight: 700; }
+  details.year1[open] summary::before { content: "−"; }
+
+  .scale { display: grid; grid-template-columns: 1.2fr 1fr; gap: 22px; margin-top: 72px; align-items: center; }
+  .scale h3 { font-size: clamp(1.5rem, 2.8vw, 2rem); font-weight: 800; }
+  .scale h3 .big { color: var(--cyan); }
+  .scale p { color: var(--ink-soft); margin-top: 12px; }
+  .bars { display: grid; gap: 10px; }
+  .bar { display: grid; grid-template-columns: 90px 1fr 92px; align-items: center; gap: 12px; font-size: 0.9rem; }
+  .bar .track { height: 14px; background: rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden; }
+  .bar .fill { height: 100%; border-radius: 8px; background: linear-gradient(90deg, #06b6d4, #3b82f6); }
+  .bar b { font-family: var(--font-display); text-align: right; font-variant-numeric: tabular-nums; }
+  .bar span { color: var(--ink-soft); }
+  .pill-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 36px; }
+  .pill-row .card { display: flex; gap: 14px; align-items: center; padding: 18px 20px; font-weight: 600; }
+  .pill-row .icon { width: 46px; height: 46px; }
+  .pill-row .icon svg { width: 22px; height: 22px; }
+
+  .fine { color: var(--ink-faint); font-size: 0.82rem; margin-top: 18px; }
+
+  /* ---------- CTA / contact ---------- */
+  .cta {
+    border-radius: 28px; padding: 56px; border: 1px solid var(--line-strong);
+    background:
+      radial-gradient(600px 300px at 90% 0%, rgba(167, 139, 250, 0.25), transparent 70%),
+      radial-gradient(600px 300px at 0% 100%, rgba(34, 211, 238, 0.2), transparent 70%),
+      var(--panel-solid);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+  }
+  .cta h2 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 800; }
+  .cta p { color: var(--ink-soft); margin-top: 16px; }
+  .cta ul { margin: 22px 0 0; }
+  form.contact { display: grid; gap: 14px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  form.contact label { display: grid; gap: 6px; font-size: 0.86rem; font-weight: 600; color: #cfe0ff; }
+  form.contact input, form.contact textarea, form.contact select {
+    width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line-strong);
+    background: rgba(5, 11, 31, 0.6); color: var(--ink); font: inherit; font-size: 0.95rem;
+  }
+  form.contact input:focus, form.contact textarea:focus, form.contact select:focus { outline: 2px solid var(--cyan); outline-offset: 1px; border-color: transparent; }
+  form.contact textarea { min-height: 100px; resize: vertical; }
+  .form-msg { font-size: 0.9rem; color: var(--teal); min-height: 1.2em; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--line); padding: 36px 0 44px; margin-top: 40px; }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; }
+  .foot .brand { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .foot .brand .motto { color: var(--ink-soft); padding-left: 18px; border-left: 1px solid var(--line-strong); font-weight: 500; }
+  .foot .legal { color: var(--ink-faint); font-size: 0.84rem; text-align: right; }
+
+  /* ---------- Reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .mini-flow i { animation: none; opacity: .8; }
+    .photo { transform: none; }
   }
-  body { margin: 0; font-family: var(--font-body); color: var(--ink); background: var(--canvas); line-height: 1.5; }
-  h1, h2, h3 { font-family: var(--font-display); margin: 0; letter-spacing: -0.01em; }
-  a { color: inherit; }
-  button { font-family: inherit; }
-  :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-  .container { max-width: 1080px; margin: 0 auto; padding: 0 1.25rem; }
 
-  header.site-header {
-    position: sticky; top: 0; z-index: 40;
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1100px) {
+    .flow { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 26px; }
+    .flow li:not(:last-child)::after { display: none; }
+    .benefits { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: repeat(2, 1fr); }
   }
-  .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 0; }
-  .brand { display: flex; align-items: center; gap: 0.55rem; font-family: var(--font-display); font-weight: 700; font-size: 1.02rem; text-decoration: none; }
-  .brand-mark {
-    width: 30px; height: 30px; border-radius: 8px;
-    background: linear-gradient(135deg, var(--primary), #4338ca);
-    display: flex; align-items: center; justify-content: center;
-    color: #fff; font-weight: 700; font-size: 0.85rem; flex-shrink: 0;
+  @media (max-width: 900px) {
+    section { padding: 72px 0; }
+    .nav-links, .nav .btn { display: none; }
+    .nav-toggle { display: grid; place-items: center; }
+    .nav.open .nav-links {
+      display: grid; position: absolute; top: 68px; left: 0; right: 0; gap: 0;
+      background: rgba(5, 11, 31, 0.97); border-bottom: 1px solid var(--line); padding: 8px 24px 16px;
+    }
+    .nav.open .nav-links a { display: block; padding: 12px 0; font-size: 1rem; }
+    .hero-grid, .savings-grid, .scale, .cta, .plans { grid-template-columns: 1fr; }
+    .hero-visual { margin: 20px 10px 40px; }
+    .photo { transform: none; }
+    .stages { grid-template-columns: 1fr; }
+    .cta { padding: 36px 28px; }
   }
-  .nav-links { display: flex; align-items: center; gap: 1.6rem; list-style: none; margin: 0; padding: 0; font-size: 0.9rem; font-weight: 600; }
-  .nav-links a { text-decoration: none; color: var(--ink-soft); padding: 0.3rem 0; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
-  .nav-links a:hover { color: var(--primary); border-color: var(--primary); }
-  .nav-cta { background: var(--primary); color: #fff; text-decoration: none; padding: 0.55rem 1.1rem; border-radius: 999px; font-weight: 700; font-size: 0.85rem; transition: background 0.15s, transform 0.15s; white-space: nowrap; }
-  .nav-cta:hover { background: var(--primary-hover); transform: translateY(-1px); }
-  @media (max-width: 680px) { .nav-links { display: none; } }
-
-  .hero { position: relative; overflow: hidden; background: linear-gradient(180deg, #0f1730 0%, #182452 55%, #1d4ed8 100%); color: #fff; padding: 4.5rem 0 6.5rem; }
-  .hero::before {
-    content: ""; position: absolute; inset: 0;
-    background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
-    background-size: 44px 44px;
-    mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), transparent 85%);
-  }
-  .hero-inner { position: relative; z-index: 1; text-align: center; }
-  .eyebrow {
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.28);
-    padding: 0.35rem 0.95rem; border-radius: 999px;
-    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-    margin-bottom: 1.4rem;
-  }
-  .hero h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); line-height: 1.08; max-width: 820px; margin: 0 auto 1rem; text-wrap: balance; }
-  .hero p.lead { max-width: 620px; margin: 0 auto 2rem; color: rgba(255,255,255,0.85); font-size: 1.05rem; }
-  .hero-actions { display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 2.8rem; }
-  .btn-primary {
-    background: var(--accent); color: #14161f; border: none; padding: 0.85rem 1.6rem; border-radius: 999px;
-    font-weight: 700; font-size: 0.98rem; cursor: pointer; text-decoration: none; display: inline-block;
-    transition: transform 0.15s, filter 0.15s;
-  }
-  .btn-primary:hover { filter: brightness(1.06); transform: translateY(-1px); }
-  .btn-ghost {
-    background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.35);
-    padding: 0.85rem 1.6rem; border-radius: 999px; font-weight: 700; font-size: 0.98rem; cursor: pointer;
-    text-decoration: none; display: inline-block; transition: background 0.15s;
-  }
-  .btn-ghost:hover { background: rgba(255,255,255,0.16); }
-  .hero-stats { display: flex; justify-content: center; gap: 2.4rem; flex-wrap: wrap; }
-  .hero-stats div { text-align: center; }
-  .hero-stats strong { display: block; font-family: var(--font-display); font-size: 1.5rem; }
-  .hero-stats span { font-size: 0.8rem; color: rgba(255,255,255,0.7); }
-  .skyline { position: absolute; left: 0; right: 0; bottom: -1px; height: 90px; color: rgba(255,255,255,0.10); }
-
-  /* Weather + PM2.5 bars sit in normal document flow (never absolutely
-     overlaid on the headline), so they can push content down but can
-     never clip text. */
-  .hero-top-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.75rem;
-  }
-  .pmi-card {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.85rem;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.22);
-    backdrop-filter: blur(10px);
-    border-radius: 999px;
-    padding: 0.5rem 1.1rem 0.5rem 0.7rem;
-    color: #fff;
-    box-shadow: var(--shadow);
-  }
-  .pmi-now { display: flex; align-items: center; gap: 0.55rem; }
-  .pmi-dot { width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0; }
-  .pmi-now-text { display: flex; flex-direction: column; align-items: flex-start; }
-  .pmi-value { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; line-height: 1.1; }
-  .pmi-label {
-    font-size: 0.62rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: rgba(255,255,255,0.65);
-  }
-  .pmi-divider { width: 1px; align-self: stretch; background: rgba(255,255,255,0.2); }
-  .pmi-regions { display: flex; gap: 0.6rem; }
-  .pmi-region { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; font-size: 0.6rem; color: rgba(255,255,255,0.85); }
-  .pmi-region .pr-label { font-weight: 700; color: rgba(255,255,255,0.6); text-transform: uppercase; }
-  .pmi-region .pr-value { font-weight: 700; }
-  .pmi-error { font-size: 0.75rem; color: rgba(255,255,255,0.7); padding: 0.5rem 0.9rem; }
-
-  .weather-card {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.85rem;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.22);
-    backdrop-filter: blur(10px);
-    border-radius: 999px;
-    padding: 0.5rem 1.1rem 0.5rem 0.7rem;
-    color: #fff;
-    box-shadow: var(--shadow);
-  }
-  .weather-now {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .weather-icon { font-size: 1.6rem; line-height: 1; }
-  .weather-now-text { display: flex; flex-direction: column; align-items: flex-start; }
-  .weather-temp { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; line-height: 1.1; }
-  .weather-location {
-    font-size: 0.62rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: rgba(255,255,255,0.65);
-  }
-  .weather-divider {
-    width: 1px;
-    align-self: stretch;
-    background: rgba(255,255,255,0.2);
-  }
-  .weather-forecast {
-    display: flex;
-    gap: 0.7rem;
-  }
-  .weather-day {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.1rem;
-    font-size: 0.62rem;
-    color: rgba(255,255,255,0.85);
-  }
-  .weather-day .wd-label { font-weight: 700; color: rgba(255,255,255,0.6); text-transform: uppercase; }
-  .weather-day .wd-icon { font-size: 0.85rem; }
-  .weather-day .wd-hi { font-weight: 700; }
-  .weather-day .wd-lo { color: rgba(255,255,255,0.55); }
-  .weather-error { font-size: 0.75rem; color: rgba(255,255,255,0.7); padding: 0.5rem 0.9rem; }
-
   @media (max-width: 640px) {
-    .hero-top-row { flex-direction: column; align-items: center; margin-bottom: 1.5rem; }
-    .weather-card, .pmi-card { flex-wrap: wrap; justify-content: center; border-radius: var(--radius-md); }
-  }
-
-  main { display: block; }
-  section { padding: 3.5rem 0; }
-  .section-head { margin-bottom: 1.75rem; }
-  .section-head .kicker { color: var(--primary); font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.4rem; display: block; }
-  .section-head h2 { font-size: 1.7rem; margin-bottom: 0.5rem; }
-  .section-head p { color: var(--ink-soft); max-width: 600px; margin: 0; }
-  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-  .reveal.in-view { opacity: 1; transform: translateY(0); }
-
-  .track-filters { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.6rem; }
-  .track-pill {
-    border: 1px solid var(--border); background: #fff; padding: 0.45rem 1rem; border-radius: 999px;
-    font-size: 0.83rem; font-weight: 600; cursor: pointer; color: var(--ink-soft); transition: all 0.15s;
-  }
-  .track-pill[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
-  .track-pill:hover { border-color: var(--ink); }
-
-  .sessions-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.15rem; }
-  .session-card {
-    text-align: left; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem;
-    background: #fff; display: flex; flex-direction: column;
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .session-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-  .session-top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
-  .track-tag {
-    font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 999px;
-    color: var(--track-color); background: color-mix(in srgb, var(--track-color) 14%, white);
-    text-transform: uppercase; letter-spacing: 0.03em;
-  }
-  .session-time { font-size: 0.78rem; color: var(--ink-soft); font-weight: 600; }
-  .session-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.85rem; line-height: 1.3; }
-  .speaker-row { display: flex; align-items: center; gap: 0.65rem; }
-  .avatar {
-    width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    color: #fff; font-weight: 700; font-size: 0.88rem; flex-shrink: 0; background: var(--track-color);
-  }
-  .speaker-name { font-size: 0.87rem; font-weight: 700; }
-  .speaker-title { font-size: 0.76rem; color: var(--ink-soft); }
-  .speaker-bio { font-size: 0.82rem; color: var(--ink-soft); margin-top: 0.7rem; line-height: 1.5; }
-  .photo-note { font-size: 0.68rem; color: #9296a6; font-style: italic; margin-top: 0.55rem; }
-  .vacancy { margin-top: 1rem; }
-  .vacancy-bar-track { height: 7px; border-radius: 999px; background: #edeef6; overflow: hidden; }
-  .vacancy-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg,#34d399,#059669); transition: width 0.3s ease; }
-  .vacancy-bar-fill.low { background: linear-gradient(90deg,#fbbf24,#d97706); }
-  .vacancy-bar-fill.full { background: linear-gradient(90deg,#f87171,#dc2626); }
-  .vacancy-label { display: flex; justify-content: space-between; font-size: 0.72rem; font-weight: 700; color: var(--good); margin-top: 0.35rem; }
-  .vacancy-label.low { color: var(--warn); }
-  .vacancy-label.full { color: var(--danger); }
-
-  .speakers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
-  .speaker-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.1rem; display: flex; flex-direction: column; align-items: flex-start; gap: 0.7rem; }
-  .speaker-card .avatar { width: 52px; height: 52px; font-size: 1rem; }
-
-  .sponsor-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.9rem; }
-  .sponsor-badge {
-    border: 1px solid var(--border); background: #fff; padding: 0.75rem 1.3rem; border-radius: var(--radius-md);
-    font-family: var(--font-display); font-weight: 700; color: var(--ink-soft); font-size: 0.95rem;
-    filter: grayscale(1); opacity: 0.75; transition: filter 0.2s, opacity 0.2s;
-  }
-  .sponsor-badge:hover { filter: grayscale(0); opacity: 1; }
-
-  .faq-list { max-width: 720px; }
-  details.faq-item { border: 1px solid var(--border); border-radius: var(--radius-md); background: #fff; padding: 0.9rem 1.1rem; margin-bottom: 0.7rem; }
-  details.faq-item summary { cursor: pointer; font-weight: 700; font-size: 0.95rem; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-  details.faq-item summary::-webkit-details-marker { display: none; }
-  details.faq-item summary::after { content: "+"; font-size: 1.2rem; color: var(--primary); font-weight: 400; margin-left: 1rem; }
-  details.faq-item[open] summary::after { content: "–"; }
-  details.faq-item p { color: var(--ink-soft); font-size: 0.88rem; margin: 0.7rem 0 0; line-height: 1.6; }
-
-  footer.site-footer { background: #0f1730; color: rgba(255,255,255,0.75); padding: 2.8rem 0; margin-top: 2rem; }
-  .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  .footer-row .brand { color: #fff; }
-  .footer-note { font-size: 0.78rem; margin-top: 1.4rem; color: rgba(255,255,255,0.45); text-align: center; }
-
-  .disclaimer-banner {
-    background: #eef4ff; border-bottom: 1px solid #c9dbfd; color: #1d3f9e; font-size: 0.8rem;
-    text-align: center; padding: 0.5rem 1rem; font-weight: 600;
+    .wrap { padding: 0 16px; }
+    .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .benefits, .why-grid, .pill-row { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .hero-stats strong { font-size: 1.2rem; }
+    .hero-stats div { padding-left: 10px; }
+    .whw .card { grid-template-columns: 1fr; gap: 16px; padding: 24px; }
+    .whw .icon { width: 58px; height: 58px; }
+    .fc-1 { left: 0; bottom: -40px; } .fc-2 { right: 0; top: -34px; }
+    .float-card { padding: 10px 14px; } .float-card b { font-size: 1.05rem; }
+    .results { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .bar { grid-template-columns: 70px 1fr 80px; font-size: 0.84rem; }
+    .total-bar { padding: 20px; }
+    .total-bar .t b { display: block; margin: 4px 0 0; }
+    .plan { padding: 26px 22px; }
+    .cta { padding: 28px 20px; border-radius: 22px; }
+    .foot .legal { text-align: left; }
   }
 </style>
 </head>
 <body>
-<div class="disclaimer-banner">🟢 Connected to a live Supabase database. Registering requires creating a free account.</div>
 
-<header class="site-header">
-  <div class="container nav-row">
-    <a class="brand" href="/">
-      <span class="brand-mark" aria-hidden="true">BE</span>
-      Built Environment PMET Summit
-    </a>
-    <ul class="nav-links">
-      <li><a href="#agenda">Agenda</a></li>
-      <li><a href="#speakers">Speakers</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li id="nav-dashboard-link" style="display:none;"><a href="/dashboard">Dashboard</a></li>
+<!-- Reusable icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-people" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="9" r="2.2"/><circle cx="19" cy="9" r="2.2"/><path d="M6.5 20v-1.5a5.5 5.5 0 0 1 11 0V20"/><path d="M1.5 19v-1a3.5 3.5 0 0 1 4-3.4M22.5 19v-1a3.5 3.5 0 0 0-4-3.4"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M8 20.5h8M12 16.5v4"/></symbol>
+    <symbol id="i-coins" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="9" cy="5.5" rx="6" ry="2.5"/><path d="M3 5.5v4c0 1.4 2.7 2.5 6 2.5M3 9.5v4c0 1.4 2.7 2.5 6 2.5M3 13.5v4c0 1.4 2.7 2.5 6 2.5M15 5.5v3"/><circle cx="16.5" cy="15.5" r="5"/><path d="M16.5 13v5M15 14.2h2.2a.9.9 0 0 1 0 1.8h-1.4a.9.9 0 0 0 0 1.8H18"/></symbol>
+    <symbol id="i-doc-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5"/><path d="M8 8h6M8 12h4"/><circle cx="16.5" cy="15.5" r="3.5"/><path d="M19 18l2.5 2.5"/></symbol>
+    <symbol id="i-doc-q" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5"/><path d="M8 8h6M8 12h3"/><circle cx="17" cy="16" r="4.5"/><path d="M15.7 14.8a1.4 1.4 0 1 1 1.8 1.3c-.4.2-.5.5-.5.9M17 19h.01"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 6l9 7 9-7"/></symbol>
+    <symbol id="i-doc-dollar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6"/><path d="M8 8h6M8 12h4"/><path d="M18 12.5v8M20 14h-2.8a1.2 1.2 0 0 0 0 2.4h1.6a1.2 1.2 0 0 1 0 2.4H16"/></symbol>
+    <symbol id="i-user-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7.5" r="3.5"/><path d="M3 20v-1a6 6 0 0 1 9-5.2"/><circle cx="17.5" cy="17" r="4"/><path d="M15.8 17l1.2 1.2 2.3-2.4"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2.5L10.5 13.5M21.5 2.5l-7 19-4-8-8-4z"/></symbol>
+    <symbol id="i-doc-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6"/><path d="M8 8h6M8 12h4"/><circle cx="17" cy="16.5" r="4.5"/><path d="M15.2 16.5l1.3 1.3 2.4-2.5"/></symbol>
+    <symbol id="i-cloud-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16H6a4 4 0 0 1-.6-8A6 6 0 0 1 17 7a4.5 4.5 0 0 1 1 8.9"/><ellipse cx="12.5" cy="13.5" rx="4" ry="1.5"/><path d="M8.5 13.5v5c0 .8 1.8 1.5 4 1.5s4-.7 4-1.5v-5M8.5 16c0 .8 1.8 1.5 4 1.5s4-.7 4-1.5"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V14M9.5 20V10M15 20v-7M20.5 20V6"/><path d="M3 11l6-5 5 3 7-6M17 3h4v4"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2.5" width="16" height="19" rx="2"/><path d="M8 7.5h8M8 11.5h8M8 15.5h8"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 17a9 9 0 1 1 17 0"/><path d="M12 14l4-5"/><circle cx="12" cy="14.5" r="1.4"/><path d="M6.5 12.5h1M12 7V8M17.5 12.5h-1"/></symbol>
+    <symbol id="i-gears" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="14" r="2.6"/><path d="M9 7.5v2M9 18.5v2M2.5 14h2M13.5 14h2M4.4 9.4l1.4 1.4M12.2 17.2l1.4 1.4M4.4 18.6l1.4-1.4M12.2 10.8l1.4-1.4"/><circle cx="17.5" cy="6.5" r="1.8"/><path d="M17.5 2.5v1.2M17.5 9.3v1.2M13.5 6.5h1.2M20.3 6.5h1.2"/></symbol>
+    <symbol id="i-ship" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h18l-2.5 5H5.5z"/><path d="M6 14V9h12v5M9 9V5h4v4M12 3v2"/><path d="M2 21.5c1.5 0 1.5-1 3-1s1.5 1 3 1 1.5-1 3-1 1.5 1 3 1 1.5-1 3-1 1.5 1 3 1"/></symbol>
+    <symbol id="i-hand-coin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="7" r="4.5"/><path d="M14 4.8v4.4M12.7 5.8h1.9a.8.8 0 0 1 0 1.6h-1.2a.8.8 0 0 0 0 1.6h1.9"/><path d="M2 15l3-1.5c1.2-.6 2.4-.4 3.4.3L10 15h4a1.5 1.5 0 0 1 0 3H9.5"/><path d="M14 16.5l4.4-2.2a1.6 1.6 0 0 1 1.8 2.6L14.5 21H5l-3-1.5"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4c3-1.8 6-2 6-2s-.2 3-2 6l-6 6-4-4z"/><path d="M8 10l-4 .5L2.5 13 7 13.5M14 16l-.5 4 2.5-1.5.5-4.5"/><circle cx="15.5" cy="8.5" r="1.4"/><path d="M5.5 16.5c-1.5 1-2 4-2 4s3-.5 4-2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10v-6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+    <symbol id="i-calc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="2.5" width="15" height="19" rx="2.5"/><rect x="7.5" y="5.5" width="9" height="4" rx="1"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01M16 17h.01"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M7.5 13.5h.01M12 13.5h.01M16.5 13.5h.01M7.5 17h.01M12 17h.01"/></symbol>
+    <symbol id="i-team-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="6" r="2.3"/><circle cx="14" cy="4.5" r="2"/><circle cx="19" cy="8" r="1.8"/><path d="M2.5 15.5a4.5 4.5 0 0 1 8.5-2M11.5 9.5a4 4 0 0 1 6 0"/><circle cx="16" cy="17" r="2.3"/><path d="M16 12.5v1.3M16 20.2v1.3M11.5 17h1.3M19.2 17h1.3M12.8 13.8l.9.9M18.3 19.3l.9.9M12.8 20.2l.9-.9M18.3 14.7l.9-.9"/></symbol>
+  </defs>
+</svg>
+
+<header class="site">
+  <nav class="wrap nav" id="nav" aria-label="Main">
+    <a class="logo" href="#top">CutCost <span>AI</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#how-it-works">How it works</a></li>
+      <li><a href="#why-us">Why CutCost AI</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#savings">Savings</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-    <a class="nav-cta" href="/register" id="nav-cta">Register</a>
-  </div>
+    <a class="btn btn-primary btn-sm" href="#contact">Get started</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </nav>
 </header>
 
-<main id="main">
+<main id="top">
+
+  <!-- ================= HERO ================= -->
   <section class="hero">
-    <div class="hero-inner container">
-      <div class="hero-top-row">
-        <div class="pmi-card" id="pmi-card">
-          <div class="loading-note" style="color:rgba(255,255,255,0.7); font-size:0.8rem; padding:0;">Loading air quality…</div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="tag">AI App for Order Taking &amp; Quotation Generation</span>
+          <h1>AI <span class="now">now.</span><br>Cut manpower costs.</h1>
+          <p class="sub">Practical AI built for logistics SMEs — working inside the systems you already use.</p>
+          <p class="lead">CutCost AI automates the repetitive order-to-quotation work your team does every day, so you save on manpower from day one — without a new ERP, a new TMS or a large risky upfront cost.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#contact">Book a workflow review
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn btn-ghost" href="#savings">Calculate your savings</a>
+          </div>
+          <div class="hero-stats">
+            <div><strong>S$26k</strong><span>potential yearly savings per AI module</span></div>
+            <div><strong>72%</strong><span>lower cost vs one S$3,000/month staff</span></div>
+            <div><strong>Month 2</strong><span>when net savings start</span></div>
+          </div>
         </div>
-        <div class="weather-card" id="weather-card">
-          <div class="loading-note" style="color:rgba(255,255,255,0.7); font-size:0.8rem; padding:0;">Loading weather…</div>
+        <div class="hero-visual">
+          <div class="photo"><img src="logistics.jpg" alt="Container ship, cargo truck and aircraft at a port at sunset" width="822" height="372"></div>
+          <div class="float-card fc-2">
+            <small>New order received</small>
+            <b>Quotation ready</b>
+            <div class="mini-flow" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="float-card fc-1">
+            <small>Estimated year 1 savings</small>
+            <b>S$26,112.08</b>
+          </div>
         </div>
       </div>
-      <span class="eyebrow">15 October 2026 · One day only</span>
-      <h1>Where the built environment's next decade gets planned.</h1>
-      <p class="lead">A one-day summit for Professionals, Managers, Executives and Technicians (PMETs) across architecture, construction, engineering and urban development — six sessions, five tracks, real conversations about the sector's future.</p>
-      <div class="hero-actions">
-        <a class="btn-primary" href="/register" id="hero-cta">Reserve your seat</a>
-        <a class="btn-ghost" href="#agenda">View the agenda</a>
-      </div>
-      <div class="hero-stats">
-        <div><strong id="stat-sessions">—</strong><span>Sessions</span></div>
-        <div><strong id="stat-tracks">—</strong><span>Tracks</span></div>
-        <div><strong id="stat-seats">—</strong><span>Total seats</span></div>
-        <div><strong id="stat-remaining">—</strong><span>Seats left</span></div>
+
+      <div class="tagline-strip reveal">
+        <span>Start low cost.</span>
+        <span>Cut manpower costs.</span>
+        <span>Keep existing systems.</span>
       </div>
     </div>
-    <svg class="skyline" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true">
-      <path fill="currentColor" d="M0 90V60h20V40h15V60h10V30h25V50h12V20h18V50h10V35h30V60h15V45h20V65h10V30h22V60h14V50h18V70h20V40h25V60h10V50h30V70h20V50h15V65h25V60h60V90Z"/>
-    </svg>
   </section>
 
-  <section id="agenda">
-    <div class="container">
+  <!-- ================= WHY / HOW / WHAT ================= -->
+  <section id="approach" style="padding-top: 24px;">
+    <div class="wrap">
+      <div class="whw">
+        <article class="card k-cyan reveal">
+          <div class="icon c-cyan"><svg><use href="#i-people"/></svg></div>
+          <div>
+            <h3><em class="c-cyan">Why</em>Reduce manpower costs immediately</h3>
+            <p>Reduce repetitive work and manpower costs with practical AI that delivers manpower savings from day one.</p>
+          </div>
+        </article>
+        <article class="card k-teal reveal">
+          <div class="icon c-teal"><svg><use href="#i-monitor"/></svg></div>
+          <div>
+            <h3><em class="c-teal">How</em>Work with what you already have</h3>
+            <p>We integrate AI into your existing workflow — no need to replace your current systems.</p>
+          </div>
+        </article>
+        <article class="card k-purple reveal">
+          <div class="icon c-purple"><svg><use href="#i-coins"/></svg></div>
+          <div>
+            <h3><em class="c-purple">What</em>No large risky upfront cost</h3>
+            <p>Get started for just <b>S$4,903.91</b> inclusive of GST (S$4,499 without GST), then just <b>S$543.91</b> inclusive of GST (S$499 without GST) per month for licensing, updates, maintenance and support.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section id="how-it-works">
+    <div class="wrap">
       <div class="section-head reveal">
-        <span class="kicker">Programme</span>
-        <h2>Agenda &amp; speakers</h2>
-        <p>Filter by track to see what's on. Sign in to register once you've picked a session.</p>
+        <span class="eyebrow">How it works</span>
+        <h2>What the Order Taking &amp; Quotation Generation <span class="grad">AI automation does</span></h2>
+        <p>From the moment an order lands in your inbox to a confirmed quotation saved in your records — CutCost AI handles the repetitive steps, and your manager stays in control of approvals.</p>
       </div>
-      <div class="track-filters reveal" id="track-filters" role="group" aria-label="Filter sessions by track"></div>
-      <div class="sessions-grid" id="sessions-grid"><p style="color:var(--ink-soft)">Loading sessions from Supabase…</p></div>
+
+      <ol class="flow reveal">
+        <li style="--c: var(--cyan)"><div class="icon"><svg><use href="#i-monitor"/></svg></div><h4>Receive order</h4><p>Order is received through your existing systems (order system or emails).</p></li>
+        <li style="--c: var(--yellow)"><div class="icon"><svg><use href="#i-doc-search"/></svg></div><h4>Extract order info</h4><p>CutCost AI works with your existing systems to extract order information.</p></li>
+        <li style="--c: var(--purple)"><div class="icon"><svg><use href="#i-doc-q"/></svg></div><h4>Check for missing info</h4><p>CutCost AI checks for missing order information.</p></li>
+        <li style="--c: var(--pink)"><div class="icon"><svg><use href="#i-mail"/></svg></div><h4>Obtain missing info</h4><p>If anything is missing, CutCost AI queries the customer via email.</p></li>
+        <li style="--c: #4ade80"><div class="icon"><svg><use href="#i-doc-dollar"/></svg></div><h4>Generate quotation</h4><p>Once all info is in, CutCost AI checks your rate cards and generates a quotation.</p></li>
+        <li style="--c: var(--orange)"><div class="icon"><svg><use href="#i-user-check"/></svg></div><h4>Approve quotation</h4><p>Your human manager approves the quotation.</p><span class="human">You stay in control</span></li>
+        <li style="--c: var(--cyan)"><div class="icon"><svg><use href="#i-send"/></svg></div><h4>Send quotation</h4><p>CutCost AI sends the quotation to the customer for confirmation.</p></li>
+        <li style="--c: var(--purple)"><div class="icon"><svg><use href="#i-doc-check"/></svg></div><h4>Capture confirmation</h4><p>CutCost AI captures the customer's confirmation of the quotation.</p></li>
+        <li style="--c: var(--teal)"><div class="icon"><svg><use href="#i-cloud-db"/></svg></div><h4>Save data</h4><p>The confirmation is saved in a secure platform maintained by you.</p></li>
+      </ol>
+
+      <h3 class="subhead reveal">How your <span class="grad">business benefits</span></h3>
+      <div class="benefits" style="margin-top: 28px;">
+        <article class="card reveal">
+          <div class="icon c-cyan"><svg><use href="#i-chart"/></svg></div>
+          <h4 class="c-cyan">Increase order processing capacity</h4>
+          <p>Process more orders with existing resources, increasing operational capacity and competitiveness.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon c-yellow"><svg><use href="#i-list"/></svg></div>
+          <h4 class="c-yellow">Generate more quotations</h4>
+          <p>Produce more quotations efficiently, increasing sales capacity and supporting business growth.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon c-purple"><svg><use href="#i-gauge"/></svg></div>
+          <h4 class="c-purple">Accelerate quotation response time</h4>
+          <p>Reduce turnaround time from order enquiry to quotation, improving customer responsiveness and increasing sales opportunities.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon c-pink"><svg><use href="#i-people"/></svg></div>
+          <h4 class="c-pink">Reduce manpower costs</h4>
+          <p>Automate the full order-to-quotation process, reduce manpower requirements and free up employees for higher-value work such as business development.</p>
+        </article>
+      </div>
     </div>
   </section>
 
-  <section id="speakers" style="background:#fff; border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
-    <div class="container">
+  <!-- ================= WHY US ================= -->
+  <section id="why-us">
+    <div class="wrap">
       <div class="section-head reveal">
-        <span class="kicker">Faculty</span>
-        <h2>Meet the speakers</h2>
-        <p>Six practitioners from across the sector. Photos shown are dummy placeholders — no real speaker photos are on file for this demo.</p>
+        <span class="eyebrow">Why choose us</span>
+        <h2>Why choose <span class="grad">CutCost AI?</span></h2>
+        <p>Not another generic AI tool — we automate your actual workflow for orders and quotation generation.</p>
       </div>
-      <div class="speakers-grid reveal" id="speakers-grid"></div>
+      <div class="why-grid">
+        <article class="card k-cyan reveal">
+          <div class="top">
+            <div class="icon c-cyan"><svg><use href="#i-ship"/></svg></div>
+            <h3>Ready-built for logistics SMEs <span class="hl">Not generic AI automation</span></h3>
+          </div>
+          <p class="desc">Designed for logistics companies with 5–30 employees.</p>
+          <ul class="checks">
+            <li>Purpose-built already for logistics workflows</li>
+            <li>We already understand your specific workflows</li>
+            <li>Faster implementation</li>
+            <li>Get value and impact quickly</li>
+          </ul>
+        </article>
+        <article class="card k-yellow reveal">
+          <div class="top">
+            <div class="icon c-yellow"><svg><use href="#i-monitor"/></svg></div>
+            <h3>Keep your <span class="hl">current systems</span></h3>
+          </div>
+          <p class="desc">No new ERP. No new TMS. Keep your email, Excel and existing freight software. We automate the repetitive work between them.</p>
+          <ul class="checks">
+            <li>Keep your existing workflow</li>
+            <li>No new ERP. No new TMS.</li>
+            <li>Keep your email, Excel and existing freight software</li>
+            <li>We automate the repetitive work between them</li>
+          </ul>
+        </article>
+        <article class="card k-pink reveal">
+          <div class="top">
+            <div class="icon c-pink"><svg><use href="#i-coins"/></svg></div>
+            <h3>Fixed, transparent SME price <span class="hl">No custom prices. Pay in stages.</span></h3>
+          </div>
+          <p class="desc">Affordable S$4,903.91 with GST (S$4,499 before GST), then S$543.91 with GST (S$499 before GST) monthly. No custom prices or hidden costs.</p>
+          <ul class="checks">
+            <li>No large upfront payment</li>
+            <li>Pay in stages as we deliver: 25% + 50% + 25%</li>
+            <li>One predictable monthly fee</li>
+          </ul>
+        </article>
+        <article class="card k-pink reveal">
+          <div class="top">
+            <div class="icon c-pink"><svg><use href="#i-chart"/></svg></div>
+            <h3>Cut <span class="hl">manpower costs</span></h3>
+          </div>
+          <p class="desc">Cut manpower costs by up to S$26,000 a year with a single AI module.</p>
+          <ul class="checks">
+            <li>Reduce repetitive work</li>
+            <li>Free your team for higher-value tasks</li>
+            <li>Improve response speed and accuracy</li>
+            <li>Stronger, more competitive business</li>
+          </ul>
+        </article>
+        <article class="card k-cyan reveal">
+          <div class="top">
+            <div class="icon c-cyan"><svg><use href="#i-rocket"/></svg></div>
+            <h3>Simple &amp; fast <span class="hl">implementation</span></h3>
+          </div>
+          <p class="desc">Pre-built logistics workflows mean less discovery, faster deployment and minimal disruption.</p>
+          <ul class="checks">
+            <li>Use proven logistics templates</li>
+            <li>Shorter implementation timeline</li>
+            <li>Minimal disruption to daily operations</li>
+            <li>Be up and running quickly</li>
+          </ul>
+        </article>
+        <article class="card k-blue reveal">
+          <div class="top">
+            <div class="icon c-blue"><svg><use href="#i-team-gear"/></svg></div>
+            <h3>Proven <span class="hl">tech leadership</span></h3>
+          </div>
+          <p class="desc">Deploy with confidence with our proven tech lead.</p>
+          <ul class="checks">
+            <li>Highly experienced AI tech lead at a Series D company in Singapore</li>
+            <li>Moved the entire workforce onto AI</li>
+            <li>Built AI tools used across the company</li>
+            <li>Proven results: invoices paid faster, daily operations take less time and software products delivered quicker</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="pill-row">
+        <div class="card reveal"><div class="icon c-cyan"><svg><use href="#i-hand-coin"/></svg></div>No grant. No waiting for reimbursements.</div>
+        <div class="card reveal"><div class="icon c-teal"><svg><use href="#i-chart"/></svg></div>Start small. Scale as you grow.</div>
+        <div class="card reveal"><div class="icon c-purple"><svg><use href="#i-shield"/></svg></div>Lower risk, greater confidence.</div>
+      </div>
+      <p class="fine reveal">No large upfront payment, no waiting for reimbursement after project completion, and no lengthy effort preparing grant documentation. One platform that grows with your business — add new workflow modules when you are ready.</p>
     </div>
   </section>
 
-  <section id="sponsors">
-    <div class="container">
-      <div class="section-head reveal" style="text-align:center; margin: 0 auto 1.5rem;">
-        <span class="kicker">Presented by</span>
-        <h2 style="font-size:1.2rem;">Supported by organizations across the sector</h2>
-      </div>
-      <div class="sponsor-strip reveal">
-        <div class="sponsor-badge">APEX Structural</div>
-        <div class="sponsor-badge">GreenCore Materials</div>
-        <div class="sponsor-badge">Meridian Consulting Group</div>
-        <div class="sponsor-badge">Skyline Analytics</div>
-        <div class="sponsor-badge">CivicWorks Foundation</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq">
-    <div class="container">
+  <!-- ================= PRICING ================= -->
+  <section id="pricing">
+    <div class="wrap">
       <div class="section-head reveal">
-        <span class="kicker">Good to know</span>
-        <h2>Frequently asked questions</h2>
+        <span class="eyebrow">Pricing</span>
+        <h2>Simple cost structure. <span class="grad">No hidden costs.</span></h2>
+        <p>A low startup cost means a low barrier to AI adoption — without the huge upfront investment. All prices in Singapore dollars.</p>
       </div>
-      <div class="faq-list reveal">
-        <details class="faq-item">
-          <summary>Do I need an account to register?</summary>
-          <p>Yes — creating a free account (email + password) lets you manage your own booking and cancel it later from the My Registration page.</p>
-        </details>
-        <details class="faq-item">
-          <summary>What happens if a session is full?</summary>
-          <p>You're automatically placed on that session's waitlist instead of being blocked. An organizer can move you to Registered from the dashboard if a seat frees up.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can I change my session after registering?</summary>
-          <p>Cancel your current booking from the My Registration page, then register again for a different session.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is my data saved anywhere?</summary>
-          <p>Yes — registrations are saved to a live Supabase database tied to your account.</p>
-        </details>
+
+      <div class="plans">
+        <article class="card plan k-cyan reveal">
+          <div class="head">
+            <div class="icon c-cyan"><svg><use href="#i-gears"/></svg></div>
+            <div><h3>One-time set-up</h3><div class="when">Paid in 3 stages as we deliver</div></div>
+          </div>
+          <div class="price"><span class="amt">S$4,903.91</span><span class="per">incl. GST</span></div>
+          <p class="price-alt"><b>S$4,499</b> before GST</p>
+          <ol>
+            <li>One-time set-up of the AI system</li>
+            <li>Integration of the AI system with your company's operating system</li>
+            <li>Free usage of the AI app for the 1st month</li>
+          </ol>
+        </article>
+        <article class="card plan k-teal reveal">
+          <div class="head">
+            <div class="icon c-teal"><svg><use href="#i-coins"/></svg></div>
+            <div><h3>Monthly subscription</h3><div class="when">From the 2nd month onwards</div></div>
+          </div>
+          <div class="price"><span class="amt">S$543.91</span><span class="per">/ month incl. GST</span></div>
+          <p class="price-alt"><b>S$499</b> before GST</p>
+          <ol>
+            <li>Licence to use one AI app for 1 month</li>
+            <li>Updates of the AI app</li>
+            <li>Maintenance and general support</li>
+            <li class="muted">Does not include creation of new features</li>
+          </ol>
+        </article>
+      </div>
+
+      <div class="stages-head reveal">
+        <div>
+          <span class="eyebrow">Pay as we deliver</span>
+          <h3 style="margin-top: 12px;">Start small, pay as we deliver, build your confidence in AI automation.</h3>
+          <p>A clear, milestone-based approach with lower upfront costs, less risk and measurable progress.</p>
+        </div>
+      </div>
+
+      <div class="stages">
+        <article class="card stage reveal">
+          <div class="row"><span class="lbl">Stage 1</span><span class="pct">25%</span></div>
+          <h4>Project confirmation</h4>
+          <div class="sp"><b>S$543.91</b><small>inclusive of GST · S$499 without GST</small></div>
+          <ul>
+            <li>Workflow mapping</li>
+            <li>Identification of AI automation areas</li>
+            <li>Project confirmation &amp; detailed plan</li>
+          </ul>
+        </article>
+        <article class="card stage s2 reveal">
+          <div class="row"><span class="lbl">Stage 2</span><span class="pct">50%</span></div>
+          <h4>Build &amp; integration</h4>
+          <div class="sp"><b>S$2,452.96</b><small>inclusive of GST · S$2,249.50 without GST</small></div>
+          <ul>
+            <li>Licence to use 1 AI app (Order Taking &amp; Quotation Generation)</li>
+            <li>Configuration and workflow setup</li>
+            <li>Integration with agreed client systems</li>
+          </ul>
+        </article>
+        <article class="card stage s3 reveal">
+          <div class="row"><span class="lbl">Stage 3</span><span class="pct">25%</span></div>
+          <h4>Testing &amp; deployment</h4>
+          <div class="sp"><b>S$1,225.98</b><small>inclusive of GST · S$1,124.75 without GST</small></div>
+          <ul>
+            <li>Testing and final adjustments</li>
+            <li>Deployment</li>
+            <li>Handover &amp; go-live support</li>
+          </ul>
+        </article>
+      </div>
+      <div class="total-bar reveal">
+        <div class="t">Total<b>S$4,903.91</b><small>incl. GST · S$4,499 without GST</small></div>
+        <div class="motto"><span>Clear milestones.</span> Lower risk. Greater confidence.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SAVINGS ================= -->
+  <section id="savings">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Savings</span>
+        <h2>Save up to <span class="grad">S$26,000 a year</span> with just 1 AI automation.</h2>
+        <p>Illustrative example based on 1 staff member at S$3,000 per month (inclusive of GST). Adjust the numbers below to see what it could look like for your team.</p>
+      </div>
+
+      <div class="savings-grid">
+        <div class="card calc reveal">
+          <h3>Savings calculator</h3>
+          <p class="hint">Each AI module frees up the equivalent of one staff member for other tasks.</p>
+          <div class="field">
+            <label for="salary">Monthly cost per staff member <output id="salary-out" for="salary">S$3,000</output></label>
+            <input type="range" id="salary" min="2000" max="8000" step="100" value="3000">
+          </div>
+          <div class="field">
+            <label id="mod-label">Number of AI modules <output id="mod-out">1</output></label>
+            <div class="modules" role="group" aria-labelledby="mod-label" id="modules">
+              <button type="button" aria-pressed="true" data-n="1">1</button>
+              <button type="button" aria-pressed="false" data-n="2">2</button>
+              <button type="button" aria-pressed="false" data-n="3">3</button>
+              <button type="button" aria-pressed="false" data-n="4">4</button>
+              <button type="button" aria-pressed="false" data-n="5">5</button>
+              <button type="button" aria-pressed="false" data-n="6">6</button>
+            </div>
+          </div>
+          <div class="results" aria-live="polite">
+            <div class="big"><small>Estimated net manpower savings in year 1 (incl. GST)</small><b id="r-net">S$26,112.08</b></div>
+            <div><small>Manpower cost without AI, year 1</small><b id="r-manpower">S$36,000.00</b></div>
+            <div><small>CutCost AI cost, year 1</small><b id="r-cost">S$9,887.92</b></div>
+            <div><small>Reduction vs manpower cost</small><b id="r-pct">72%</b></div>
+            <div><small>Net savings from year 2 (per year)</small><b id="r-y2">S$29,473.08</b></div>
+          </div>
+        </div>
+
+        <div class="kpis">
+          <div class="card kpi reveal">
+            <div class="icon c-cyan"><svg><use href="#i-coins"/></svg></div>
+            <div><small>Estimated potential manpower savings in 1 year (incl. GST)</small><b class="c-cyan">S$26,112.08</b></div>
+          </div>
+          <div class="card kpi reveal">
+            <svg class="donut" viewBox="0 0 42 42" aria-hidden="true">
+              <circle cx="21" cy="21" r="15.9" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6"/>
+              <circle cx="21" cy="21" r="15.9" fill="none" stroke="#22d3ee" stroke-width="6" stroke-dasharray="72.5 27.5" stroke-dashoffset="25" stroke-linecap="butt"/>
+            </svg>
+            <div><b class="c-cyan">72%</b><small>reduction vs S$36,000 annual manpower cost</small></div>
+          </div>
+          <div class="card kpi reveal" style="display:block;">
+            <small style="font-weight:600; color: var(--ink); font-size: 1rem;">Investment in year 1 (incl. GST)</small>
+            <div style="display:grid; gap:10px; margin-top: 14px;">
+              <div style="display:flex; justify-content:space-between; gap: 12px;"><span>One-time setup cost</span><b style="font-size:1.1rem;">S$4,903.91</b></div>
+              <div style="display:flex; justify-content:space-between; gap: 12px;"><span>Monthly subscription (S$543.91 × 11 months)</span><b style="font-size:1.1rem;">S$5,983.01</b></div>
+              <div style="display:flex; justify-content:space-between; gap: 12px; border-top: 1px solid var(--line); padding-top: 10px;"><span>Total year 1 cost</span><b style="font-size:1.1rem;" class="c-cyan">S$9,887.92</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <details class="year1 reveal">
+        <summary>See the month-by-month year 1 breakdown</summary>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th scope="col">Month</th><th scope="col">Projected manpower cost without AI (S$)</th><th scope="col">CutCost AI cost (S$)</th><th scope="col">Projected net savings (S$)</th><th scope="col">Notes</th></tr>
+            </thead>
+            <tbody id="year1-body"></tbody>
+            <tfoot>
+              <tr><td>Year 1 total</td><td>36,000.00</td><td>9,887.92</td><td class="hl">26,112.08</td><td><span class="note">4,903.91 + (543.91 × 11 months)</span></td></tr>
+            </tfoot>
+          </table>
+        </div>
+        <p class="fine">All figures inclusive of 9% GST. Illustrative example based on 1 staff member at S$3,000 per month.</p>
+      </details>
+
+      <div class="scale">
+        <div class="reveal">
+          <span class="eyebrow">Scale</span>
+          <h3 style="margin-top: 12px;">Enjoy manpower cost savings of up to <span class="big">S$156,000</span> every year with 6 AI automation modules.</h3>
+          <p>Start with one module, then add new workflow modules when you're ready. Each module frees one more staff member for other tasks.</p>
+        </div>
+        <div class="card reveal">
+          <div class="bars" id="bars"></div>
+          <p class="fine" style="margin-top: 14px;">Projected savings in manpower cost per year (S$, incl. GST). Illustrative example based on 1 staff member at S$3,000 per month per module.</p>
+        </div>
+      </div>
+
+      <div class="pill-row">
+        <div class="card reveal"><div class="icon c-cyan"><svg><use href="#i-people"/></svg></div>Do more with your existing team</div>
+        <div class="card reveal"><div class="icon c-teal"><svg><use href="#i-chart"/></svg></div>Quick payback — from month 2</div>
+        <div class="card reveal"><div class="icon c-purple"><svg><use href="#i-shield"/></svg></div>Lower costs, stronger competitiveness</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA / CONTACT ================= -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="cta reveal">
+        <div>
+          <span class="eyebrow">Get started</span>
+          <h2 style="margin-top: 14px;">Start low cost. Cut manpower costs. <span class="grad">Keep existing systems.</span></h2>
+          <p>Tell us how your team handles orders and quotations today. We'll map your workflow, identify where AI can take over the repetitive work, and give you a clear plan — starting with Stage 1.</p>
+          <ul class="checks">
+            <li>Built for logistics SMEs with 5–30 employees</li>
+            <li>Fixed, transparent pricing — no custom quotes</li>
+            <li>Pay in stages as we deliver</li>
+          </ul>
+        </div>
+        <!-- Set data-email to the address that should receive enquiries. -->
+        <form class="contact" id="contact-form" data-email="limaindiatango@gmail.com" novalidate>
+          <div class="form-row">
+            <label>Name<input name="name" autocomplete="name" required></label>
+            <label>Company<input name="company" autocomplete="organization" required></label>
+          </div>
+          <div class="form-row">
+            <label>Work email<input type="email" name="email" autocomplete="email" required></label>
+            <label>Phone<input type="tel" name="phone" autocomplete="tel"></label>
+          </div>
+          <label>Team size
+            <select name="size">
+              <option>Fewer than 5 employees</option>
+              <option selected>5–30 employees</option>
+              <option>More than 30 employees</option>
+            </select>
+          </label>
+          <label>How do you handle orders and quotations today?<textarea name="message" placeholder="e.g. orders arrive by email, we check rate cards in Excel and send quotations manually…"></textarea></label>
+          <button class="btn btn-primary" type="submit">Book a workflow review</button>
+          <p class="form-msg" id="form-msg" role="status"></p>
+        </form>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-row">
-      <span class="brand"><span class="brand-mark" aria-hidden="true">BE</span>Built Environment PMET Summit</span>
+<footer>
+  <div class="wrap foot">
+    <div class="brand">
+      <a class="logo" href="#top">CutCost <span>AI</span></a>
+      <span class="motto">AI now. Cut manpower costs.</span>
     </div>
-    <div class="footer-note">events@builtenvironmentsummit.example (dummy address) · © 2026 Built Environment PMET Summit — demo content, not a real event. Registration data is real; the event itself is not.</div>
+    <div class="legal">
+      Copyright <span id="year">2026</span>, CutCost AI Pte. Ltd. All rights reserved.<br>
+      Prices and figures are subject to change. Savings figures are illustrative.
+    </div>
   </div>
 </footer>
 
-<script type="module">
-  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+<script>
+  // Pricing constants (S$, inclusive of 9% GST)
+  const SETUP = 4903.91;
+  const MONTHLY = 543.91;
+  const YEAR1_COST = 9887.92; // year 1 CutCost AI cost per module, as stated in the pitch deck
 
-  const SUPABASE_URL = 'https://knglmtxdzgtepmrqmbdu.supabase.co';
-  const PUBLISHABLE_KEY = 'sb_publishable_XNXOnZeJcOsszoFYwbjphw_J9AEHlOw';
-  const supabase = createClient(SUPABASE_URL, PUBLISHABLE_KEY);
+  const money = (n, dp = 2) => (n < 0 ? "-" : "") + "S$" + Math.abs(n).toLocaleString("en-SG", { minimumFractionDigits: dp, maximumFractionDigits: dp });
+  const plain = (n) => n.toLocaleString("en-SG", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  let TRACKS = [];
-  let sessions = [];
-  let registrationCounts = {};
-  let activeTrack = 'all';
+  // Mobile nav
+  const nav = document.getElementById("nav");
+  const toggle = document.getElementById("nav-toggle");
+  toggle.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", open);
+  });
+  document.querySelectorAll("#nav-links a").forEach((a) => a.addEventListener("click", () => {
+    nav.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+  }));
 
-  const trackFiltersEl = document.getElementById('track-filters');
-  const sessionsGrid = document.getElementById('sessions-grid');
-  const speakersGrid = document.getElementById('speakers-grid');
-  const statSessions = document.getElementById('stat-sessions');
-  const statTracks = document.getElementById('stat-tracks');
-  const statSeats = document.getElementById('stat-seats');
-  const statRemaining = document.getElementById('stat-remaining');
-  const navCta = document.getElementById('nav-cta');
-  const heroCta = document.getElementById('hero-cta');
-  const navDashboardLink = document.getElementById('nav-dashboard-link');
-  const weatherCard = document.getElementById('weather-card');
-  const pmiCard = document.getElementById('pmi-card');
-
-  // WMO weather codes -> {icon, label}. https://open-meteo.com/en/docs
-  const WEATHER_CODES = {
-    0: ['☀️', 'Clear sky'], 1: ['🌤️', 'Mainly clear'], 2: ['⛅', 'Partly cloudy'], 3: ['☁️', 'Overcast'],
-    45: ['🌫️', 'Fog'], 48: ['🌫️', 'Fog'],
-    51: ['🌦️', 'Light drizzle'], 53: ['🌦️', 'Drizzle'], 55: ['🌦️', 'Dense drizzle'],
-    56: ['🌧️', 'Freezing drizzle'], 57: ['🌧️', 'Freezing drizzle'],
-    61: ['🌧️', 'Light rain'], 63: ['🌧️', 'Rain'], 65: ['🌧️', 'Heavy rain'],
-    66: ['🌧️', 'Freezing rain'], 67: ['🌧️', 'Freezing rain'],
-    71: ['❄️', 'Light snow'], 73: ['❄️', 'Snow'], 75: ['❄️', 'Heavy snow'], 77: ['❄️', 'Snow grains'],
-    80: ['🌦️', 'Rain showers'], 81: ['🌦️', 'Rain showers'], 82: ['⛈️', 'Violent showers'],
-    85: ['❄️', 'Snow showers'], 86: ['❄️', 'Snow showers'],
-    95: ['⛈️', 'Thunderstorm'], 96: ['⛈️', 'Thunderstorm'], 99: ['⛈️', 'Severe thunderstorm']
-  };
-  function weatherIcon(code) { return (WEATHER_CODES[code] || ['🌡️', 'Unknown'])[0]; }
-  function weatherLabel(code) { return (WEATHER_CODES[code] || ['🌡️', 'Unknown'])[1]; }
-
-  async function loadWeather() {
-    try {
-      const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=1.3521&longitude=103.8198&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Asia%2FSingapore&forecast_days=4');
-      if (!res.ok) throw new Error('Weather request failed');
-      const data = await res.json();
-
-      const current = data.current;
-      const days = data.daily.time.map((date, i) => ({
-        date,
-        code: data.daily.weather_code[i],
-        hi: Math.round(data.daily.temperature_2m_max[i]),
-        lo: Math.round(data.daily.temperature_2m_min[i])
-      })).slice(1, 4); // next 3 days, excluding today (already shown as "now")
-
-      const dayLabel = (iso) => new Date(iso + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'short' });
-
-      weatherCard.innerHTML = `
-        <div class="weather-now">
-          <span class="weather-icon" title="${weatherLabel(current.weather_code)}">${weatherIcon(current.weather_code)}</span>
-          <div class="weather-now-text">
-            <span class="weather-temp">${Math.round(current.temperature_2m)}°</span>
-            <span class="weather-location">Singapore</span>
-          </div>
-        </div>
-        <div class="weather-divider"></div>
-        <div class="weather-forecast">
-          ${days.map(d => `
-            <div class="weather-day">
-              <span class="wd-label">${dayLabel(d.date)}</span>
-              <span class="wd-icon" title="${weatherLabel(d.code)}">${weatherIcon(d.code)}</span>
-              <span class="wd-hi">${d.hi}°</span>
-              <span class="wd-lo">${d.lo}°</span>
-            </div>
-          `).join('')}
-        </div>
-      `;
-    } catch (err) {
-      weatherCard.innerHTML = `<span class="weather-error">Singapore weather unavailable right now.</span>`;
-    }
+  // Year 1 table (fixed illustrative example: 1 staff at S$3,000/month)
+  const body = document.getElementById("year1-body");
+  for (let m = 1; m <= 12; m++) {
+    const cost = m === 1 ? SETUP : MONTHLY;
+    const net = 3000 - cost;
+    const tr = document.createElement("tr");
+    tr.innerHTML =
+      `<td>${m}</td><td>3,000.00</td><td>${plain(cost)}${m === 1 ? " (setup)" : ""}</td>` +
+      `<td class="${net < 0 ? "neg" : "pos"}">${net < 0 ? "-" : ""}${plain(Math.abs(net))}</td>` +
+      `<td><span class="note">${m === 1 ? "One-time implementation cost" : "Monthly subscription"}</span></td>`;
+    body.appendChild(tr);
   }
 
-  // PM2.5 concentration bands (µg/m³, US EPA-style breakpoints), used here
-  // for a plain-language label only - not an official 24-hr PSI reading.
-  function pm25Category(value) {
-    if (value <= 12) return { label: 'Good', color: '#22c55e' };
-    if (value <= 35.4) return { label: 'Moderate', color: '#eab308' };
-    if (value <= 55.4) return { label: 'Unhealthy (sensitive)', color: '#f97316' };
-    if (value <= 150.4) return { label: 'Unhealthy', color: '#ef4444' };
-    if (value <= 250.4) return { label: 'Very unhealthy', color: '#a855f7' };
-    return { label: 'Hazardous', color: '#7f1d1d' };
+  // Scale bars
+  const bars = document.getElementById("bars");
+  for (let n = 1; n <= 6; n++) {
+    const v = 26000 * n;
+    const row = document.createElement("div");
+    row.className = "bar";
+    row.innerHTML = `<span>${n} module${n > 1 ? "s" : ""}</span><div class="track"><div class="fill" style="width:${(n / 6) * 100}%"></div></div><b>${v.toLocaleString("en-SG")}</b>`;
+    bars.appendChild(row);
   }
 
-  async function loadPMI() {
-    try {
-      const res = await fetch('https://api-open.data.gov.sg/v2/real-time/api/pm25');
-      if (!res.ok) throw new Error('PM2.5 request failed');
-      const data = await res.json();
-      const readings = data.data.items[0].readings.pm25_one_hourly;
-      const regions = ['north', 'south', 'east', 'west', 'central'];
-      const values = regions.map(r => readings[r]).filter(v => typeof v === 'number');
-      const avg = Math.round(values.reduce((sum, v) => sum + v, 0) / values.length);
-      const cat = pm25Category(avg);
+  // Savings calculator
+  const salary = document.getElementById("salary");
+  const salaryOut = document.getElementById("salary-out");
+  const modOut = document.getElementById("mod-out");
+  const modButtons = document.querySelectorAll("#modules button");
+  let modules = 1;
 
-      pmiCard.innerHTML = `
-        <div class="pmi-now">
-          <span class="pmi-dot" style="background:${cat.color}" title="${cat.label}"></span>
-          <div class="pmi-now-text">
-            <span class="pmi-value">${avg}</span>
-            <span class="pmi-label">PM2.5 · ${cat.label}</span>
-          </div>
-        </div>
-        <div class="pmi-divider"></div>
-        <div class="pmi-regions">
-          ${regions.map(r => `
-            <div class="pmi-region">
-              <span class="pr-label">${r.slice(0, 1).toUpperCase()}</span>
-              <span class="pr-value">${readings[r] ?? '–'}</span>
-            </div>
-          `).join('')}
-        </div>
-      `;
-    } catch (err) {
-      pmiCard.innerHTML = `<span class="pmi-error">Air quality unavailable right now.</span>`;
-    }
+  function calc() {
+    const s = Number(salary.value);
+    const manpower = s * 12 * modules;
+    const cost = YEAR1_COST * modules;
+    const net = manpower - cost;
+    const y2 = (s * 12 - MONTHLY * 12) * modules;
+    salaryOut.textContent = money(s, 0);
+    modOut.textContent = modules;
+    document.getElementById("r-manpower").textContent = money(manpower);
+    document.getElementById("r-cost").textContent = money(cost);
+    const rNet = document.getElementById("r-net");
+    rNet.textContent = money(net);
+    rNet.classList.toggle("neg", net < 0);
+    document.getElementById("r-pct").textContent = Math.max(0, Math.floor((net / manpower) * 100)) + "%";
+    document.getElementById("r-y2").textContent = money(y2);
   }
+  salary.addEventListener("input", calc);
+  modButtons.forEach((b) => b.addEventListener("click", () => {
+    modules = Number(b.dataset.n);
+    modButtons.forEach((x) => x.setAttribute("aria-pressed", x === b));
+    calc();
+  }));
+  calc();
 
-  function escapeHtml(str) {
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-  }
-  function getTrack(id) { return TRACKS.find(t => t.id === id); }
-  function formatTime(hms) {
-    const [h, m] = hms.split(':').map(Number);
-    return new Date(2000, 0, 1, h, m).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
-  }
-
-  async function loadCatalog() {
-    const [{ data: tracksData, error: tracksErr }, { data: sessionsData, error: sessionsErr }] = await Promise.all([
-      supabase.from('tracks').select('*'),
-      supabase.from('sessions').select('id,title,track_id,start_time,capacity,speaker:speakers(name,title,bio,initials)').order('start_time')
-    ]);
-    if (tracksErr || sessionsErr) { console.error(tracksErr || sessionsErr); return false; }
-    TRACKS = tracksData.map(t => ({ id: t.id, label: t.label, color: t.color }));
-    sessions = sessionsData.map(s => ({
-      id: s.id, title: s.title, track: s.track_id, capacity: s.capacity, time: formatTime(s.start_time),
-      speaker: { name: s.speaker.name, title: s.speaker.title, bio: s.speaker.bio, initials: s.speaker.initials }
-    }));
-    return true;
-  }
-
-  function seatsRemaining(session) {
-    const taken = registrationCounts[session.id] || 0;
-    return Math.max(0, session.capacity - taken);
-  }
-  function vacancyState(remaining, capacity) {
-    if (remaining === 0) return 'full';
-    if (remaining / capacity <= 0.2) return 'low';
-    return '';
-  }
-
-  function renderTrackFilters() {
-    const pills = [{ id: 'all', label: 'All sessions' }, ...TRACKS];
-    trackFiltersEl.innerHTML = pills.map(t => `
-      <button type="button" class="track-pill" data-track="${t.id}" aria-pressed="${activeTrack === t.id}">${escapeHtml(t.label)}</button>
-    `).join('');
-    trackFiltersEl.querySelectorAll('.track-pill').forEach(btn => {
-      btn.addEventListener('click', () => { activeTrack = btn.getAttribute('data-track'); renderTrackFilters(); renderSessions(); });
-    });
-  }
-
-  function renderStats() {
-    statSessions.textContent = sessions.length;
-    statTracks.textContent = TRACKS.length;
-    const totalCapacity = sessions.reduce((sum, s) => sum + s.capacity, 0);
-    const totalRemaining = sessions.reduce((sum, s) => sum + seatsRemaining(s), 0);
-    statSeats.textContent = totalCapacity;
-    statRemaining.textContent = totalRemaining;
-  }
-
-  function renderSessions() {
-    const visible = activeTrack === 'all' ? sessions : sessions.filter(s => s.track === activeTrack);
-    sessionsGrid.innerHTML = visible.map(s => {
-      const track = getTrack(s.track);
-      const remaining = seatsRemaining(s);
-      const pct = Math.round((remaining / s.capacity) * 100);
-      const state = vacancyState(remaining, s.capacity);
-      return `
-        <div class="session-card" style="--track-color:${track.color}">
-          <div class="session-top-row">
-            <span class="track-tag">${escapeHtml(track.label)}</span>
-            <span class="session-time">${s.time}</span>
-          </div>
-          <div class="session-title">${escapeHtml(s.title)}</div>
-          <div class="speaker-row">
-            <div class="avatar">${s.speaker.initials}</div>
-            <div>
-              <div class="speaker-name">${escapeHtml(s.speaker.name)}</div>
-              <div class="speaker-title">${escapeHtml(s.speaker.title)}</div>
-            </div>
-          </div>
-          <div class="speaker-bio">${escapeHtml(s.speaker.bio)}</div>
-          <div class="photo-note">Photo placeholder — dummy speaker, no real photo on file.</div>
-          <div class="vacancy">
-            <div class="vacancy-bar-track"><div class="vacancy-bar-fill ${state}" style="width:${pct}%"></div></div>
-            <div class="vacancy-label ${state}">
-              <span>${remaining === 0 ? 'Fully booked' : `${remaining} of ${s.capacity} seats left`}</span>
-              <span>${remaining === 0 ? '0%' : pct + '%'}</span>
-            </div>
-          </div>
-        </div>
-      `;
-    }).join('');
-    renderStats();
-  }
-
-  function renderSpeakers() {
-    speakersGrid.innerHTML = sessions.map(s => {
-      const track = getTrack(s.track);
-      return `
-        <div class="speaker-card">
-          <div class="avatar" style="background:${track.color}">${s.speaker.initials}</div>
-          <div>
-            <div class="speaker-name">${escapeHtml(s.speaker.name)}</div>
-            <div class="speaker-title">${escapeHtml(s.speaker.title)}</div>
-          </div>
-          <div class="speaker-bio" style="margin-top:0;">${escapeHtml(s.speaker.bio)}</div>
-        </div>
-      `;
-    }).join('');
-  }
-
-  function initRevealObserver() {
-    const revealTargets = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) { entry.target.classList.add('in-view'); observer.unobserve(entry.target); }
-        });
-      }, { threshold: 0.12 });
-      revealTargets.forEach(el => observer.observe(el));
-    } else {
-      revealTargets.forEach(el => el.classList.add('in-view'));
-    }
-  }
-
-  async function checkAuthState() {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session?.user) return;
-
-    const { data: profile } = await supabase.from('profiles').select('role').eq('id', session.user.id).maybeSingle();
-    const isAdmin = profile?.role === 'admin';
-
-    navCta.textContent = isAdmin ? 'Dashboard' : 'My Registration';
-    navCta.href = isAdmin ? '/dashboard' : '/my-registration';
-    heroCta.textContent = isAdmin ? 'Go to dashboard' : 'View my registration';
-    heroCta.href = isAdmin ? '/dashboard' : '/my-registration';
-    if (isAdmin) navDashboardLink.style.display = 'list-item';
-  }
-
-  async function init() {
-    const catalogOk = await loadCatalog();
-    if (!catalogOk) {
-      sessionsGrid.innerHTML = '<p style="color:var(--danger)">Could not load sessions from Supabase.</p>';
+  // Contact form: opens the visitor's email client with the enquiry pre-filled
+  const form = document.getElementById("contact-form");
+  const msg = document.getElementById("form-msg");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const d = new FormData(form);
+    if (!d.get("name") || !d.get("company") || !form.email.checkValidity() || !d.get("email")) {
+      msg.style.color = "var(--red)";
+      msg.textContent = "Please fill in your name, company and a valid work email.";
       return;
     }
-    // The registrations table itself isn't publicly readable (no PII exposure to
-    // anonymous visitors) - vacancy counts come from a SECURITY DEFINER function
-    // that only ever returns aggregate counts, never individual rows.
-    const { data: vacancy } = await supabase.rpc('get_session_vacancy');
-    if (vacancy) {
-      registrationCounts = {};
-      vacancy.forEach(v => { registrationCounts[v.session_id] = Number(v.taken); });
+    const to = form.dataset.email;
+    if (!to) {
+      msg.style.color = "var(--ink-soft)";
+      msg.textContent = "Thanks! Online enquiries are being set up — please reach out to the CutCost AI team directly in the meantime.";
+      return;
     }
-    renderTrackFilters();
-    renderSessions();
-    renderSpeakers();
-    initRevealObserver();
-    checkAuthState();
-    loadWeather();
-    loadPMI();
-  }
+    const subject = `Workflow review request — ${d.get("company")}`;
+    const text = `Name: ${d.get("name")}\nCompany: ${d.get("company")}\nEmail: ${d.get("email")}\nPhone: ${d.get("phone") || "-"}\nTeam size: ${d.get("size")}\n\n${d.get("message") || ""}`;
+    window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+    msg.style.color = "var(--teal)";
+    msg.textContent = "Opening your email app to send the enquiry…";
+  });
 
-  init();
+  // Reveal on scroll
+  const io = "IntersectionObserver" in window ? new IntersectionObserver((entries) => {
+    entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, { threshold: 0.12 }) : null;
+  document.querySelectorAll(".reveal").forEach((el) => io ? io.observe(el) : el.classList.add("in"));
 </script>
 </body>
 </html>

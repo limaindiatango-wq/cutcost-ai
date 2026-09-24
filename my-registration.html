@@ -68,7 +68,7 @@
 </head>
 <body>
 <header class="site-header">
-  <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">BE</span>Built Environment PMET Summit</a>
+  <a class="brand" href="/summit"><span class="brand-mark" aria-hidden="true">BE</span>Built Environment PMET Summit</a>
   <div class="signed-in-as" id="signed-in-as" style="display:none;">
     <span id="signed-in-email"></span>
     <button class="signout-btn" id="signout-btn">Sign out</button>
@@ -115,7 +115,7 @@
 
   signoutBtn.addEventListener('click', async () => {
     await supabase.auth.signOut();
-    window.location.href = '/';
+    window.location.href = '/summit';
   });
 
   function renderSignedOut() {
