@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CutCost AI — AI Order Taking &amp; Quotation Generation for Logistics</title>
-<meta name="description" content="CutCost AI automates order taking and quotation generation for logistics SMEs. Keep your existing systems, start from S$4,499 before GST and save up to S$26,000 a year per AI module.">
+<meta name="description" content="CutCost AI automates order taking and quotation generation for logistics SMEs. Keep your existing systems, start from S$4,499 before GST and save over S$25,000 in year 1 per AI module.">
 <meta property="og:title" content="CutCost AI — AI now. Cut manpower costs.">
 <meta property="og:description" content="AI app for order taking & quotation generation, built for logistics SMEs. Start low cost. Cut manpower costs. Keep existing systems.">
 <meta property="og:image" content="logistics.jpg">
@@ -383,6 +383,15 @@
   form.contact input:focus, form.contact textarea:focus, form.contact select:focus { outline: 2px solid var(--cyan); outline-offset: 1px; border-color: transparent; }
   form.contact textarea { min-height: 100px; resize: vertical; }
   .form-msg { font-size: 0.9rem; color: var(--teal); min-height: 1.2em; }
+  .wa-link { border-color: rgba(37, 211, 102, 0.55); }
+  .wa-link svg { color: #25d366; }
+  .wa-float {
+    position: fixed; right: 20px; bottom: 20px; z-index: 60; width: 58px; height: 58px; border-radius: 50%;
+    display: grid; place-items: center; background: #25d366; color: #fff;
+    box-shadow: 0 12px 30px -8px rgba(37, 211, 102, 0.7); transition: transform .15s;
+  }
+  .wa-float:hover { transform: scale(1.06); }
+  [hidden] { display: none !important; }
 
   /* ---------- Footer ---------- */
   footer { border-top: 1px solid var(--line); padding: 36px 0 44px; margin-top: 40px; }
@@ -510,8 +519,8 @@
             <a class="btn btn-ghost" href="#savings">Calculate your savings</a>
           </div>
           <div class="hero-stats">
-            <div><strong>S$26k</strong><span>potential yearly savings per AI module</span></div>
-            <div><strong>72%</strong><span>lower cost vs one S$3,000/month staff</span></div>
+            <div><strong>S$25k+</strong><span>potential year 1 savings per AI module</span></div>
+            <div><strong>~70%</strong><span>lower cost vs one S$3,000/month staff</span></div>
             <div><strong>Month 2</strong><span>when net savings start</span></div>
           </div>
         </div>
@@ -524,7 +533,7 @@
           </div>
           <div class="float-card fc-1">
             <small>Estimated year 1 savings</small>
-            <b>S$26,112.08</b>
+            <b>S$25,113.08</b>
           </div>
         </div>
       </div>
@@ -665,7 +674,7 @@
             <div class="icon c-pink"><svg><use href="#i-chart"/></svg></div>
             <h3>Cut <span class="hl">manpower costs</span></h3>
           </div>
-          <p class="desc">Cut manpower costs by up to S$26,000 a year with a single AI module.</p>
+          <p class="desc">Cut manpower costs by over S$25,000 in the first year with a single AI module — and more every year after.</p>
           <ul class="checks">
             <li>Reduce repetitive work</li>
             <li>Free your team for higher-value tasks</li>
@@ -761,7 +770,7 @@
         <article class="card stage reveal">
           <div class="row"><span class="lbl">Stage 1</span><span class="pct">25%</span></div>
           <h4>Project confirmation</h4>
-          <div class="sp"><b>S$543.91</b><small>inclusive of GST · S$499 without GST</small></div>
+          <div class="sp"><b>S$1,225.98</b><small>inclusive of GST · S$1,124.75 without GST</small></div>
           <ul>
             <li>Workflow mapping</li>
             <li>Identification of AI automation areas</li>
@@ -801,7 +810,7 @@
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">Savings</span>
-        <h2>Save up to <span class="grad">S$26,000 a year</span> with just 1 AI automation.</h2>
+        <h2>Save over <span class="grad">S$25,000 in year 1</span> with just 1 AI automation.</h2>
         <p>Illustrative example based on 1 staff member at S$3,000 per month (inclusive of GST). Adjust the numbers below to see what it could look like for your team.</p>
       </div>
 
@@ -825,10 +834,10 @@
             </div>
           </div>
           <div class="results" aria-live="polite">
-            <div class="big"><small>Estimated net manpower savings in year 1 (incl. GST)</small><b id="r-net">S$26,112.08</b></div>
+            <div class="big"><small>Estimated net manpower savings in year 1 (incl. GST)</small><b id="r-net">S$25,113.08</b></div>
             <div><small>Manpower cost without AI, year 1</small><b id="r-manpower">S$36,000.00</b></div>
-            <div><small>CutCost AI cost, year 1</small><b id="r-cost">S$9,887.92</b></div>
-            <div><small>Reduction vs manpower cost</small><b id="r-pct">72%</b></div>
+            <div><small>CutCost AI cost, year 1</small><b id="r-cost">S$10,886.92</b></div>
+            <div><small>Reduction vs manpower cost</small><b id="r-pct">70%</b></div>
             <div><small>Net savings from year 2 (per year)</small><b id="r-y2">S$29,473.08</b></div>
           </div>
         </div>
@@ -836,21 +845,21 @@
         <div class="kpis">
           <div class="card kpi reveal">
             <div class="icon c-cyan"><svg><use href="#i-coins"/></svg></div>
-            <div><small>Estimated potential manpower savings in 1 year (incl. GST)</small><b class="c-cyan">S$26,112.08</b></div>
+            <div><small>Estimated potential manpower savings in 1 year (incl. GST)</small><b class="c-cyan">S$25,113.08</b></div>
           </div>
           <div class="card kpi reveal">
             <svg class="donut" viewBox="0 0 42 42" aria-hidden="true">
               <circle cx="21" cy="21" r="15.9" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6"/>
-              <circle cx="21" cy="21" r="15.9" fill="none" stroke="#22d3ee" stroke-width="6" stroke-dasharray="72.5 27.5" stroke-dashoffset="25" stroke-linecap="butt"/>
+              <circle cx="21" cy="21" r="15.9" fill="none" stroke="#22d3ee" stroke-width="6" stroke-dasharray="69.8 30.2" stroke-dashoffset="25" stroke-linecap="butt"/>
             </svg>
-            <div><b class="c-cyan">72%</b><small>reduction vs S$36,000 annual manpower cost</small></div>
+            <div><b class="c-cyan">~70%</b><small>reduction vs S$36,000 annual manpower cost</small></div>
           </div>
           <div class="card kpi reveal" style="display:block;">
             <small style="font-weight:600; color: var(--ink); font-size: 1rem;">Investment in year 1 (incl. GST)</small>
             <div style="display:grid; gap:10px; margin-top: 14px;">
               <div style="display:flex; justify-content:space-between; gap: 12px;"><span>One-time setup cost</span><b style="font-size:1.1rem;">S$4,903.91</b></div>
               <div style="display:flex; justify-content:space-between; gap: 12px;"><span>Monthly subscription (S$543.91 × 11 months)</span><b style="font-size:1.1rem;">S$5,983.01</b></div>
-              <div style="display:flex; justify-content:space-between; gap: 12px; border-top: 1px solid var(--line); padding-top: 10px;"><span>Total year 1 cost</span><b style="font-size:1.1rem;" class="c-cyan">S$9,887.92</b></div>
+              <div style="display:flex; justify-content:space-between; gap: 12px; border-top: 1px solid var(--line); padding-top: 10px;"><span>Total year 1 cost</span><b style="font-size:1.1rem;" class="c-cyan">S$10,886.92</b></div>
             </div>
           </div>
         </div>
@@ -865,7 +874,7 @@
             </thead>
             <tbody id="year1-body"></tbody>
             <tfoot>
-              <tr><td>Year 1 total</td><td>36,000.00</td><td>9,887.92</td><td class="hl">26,112.08</td><td><span class="note">4,903.91 + (543.91 × 11 months)</span></td></tr>
+              <tr><td>Year 1 total</td><td>36,000.00</td><td>10,886.92</td><td class="hl">25,113.08</td><td><span class="note">4,903.91 + (543.91 × 11 months)</span></td></tr>
             </tfoot>
           </table>
         </div>
@@ -875,12 +884,12 @@
       <div class="scale">
         <div class="reveal">
           <span class="eyebrow">Scale</span>
-          <h3 style="margin-top: 12px;">Enjoy manpower cost savings of up to <span class="big">S$156,000</span> every year with 6 AI automation modules.</h3>
+          <h3 style="margin-top: 12px;">Enjoy manpower cost savings of over <span class="big">S$150,000</span> a year with 6 AI automation modules.</h3>
           <p>Start with one module, then add new workflow modules when you're ready. Each module frees one more staff member for other tasks.</p>
         </div>
         <div class="card reveal">
           <div class="bars" id="bars"></div>
-          <p class="fine" style="margin-top: 14px;">Projected savings in manpower cost per year (S$, incl. GST). Illustrative example based on 1 staff member at S$3,000 per month per module.</p>
+          <p class="fine" style="margin-top: 14px;">Projected net manpower savings in year 1 (S$, incl. GST), after CutCost AI costs. Illustrative example based on 1 staff member at S$3,000 per month per module.</p>
         </div>
       </div>
 
@@ -925,6 +934,10 @@
           </label>
           <label>How do you handle orders and quotations today?<textarea name="message" placeholder="e.g. orders arrive by email, we check rate cards in Excel and send quotations manually…"></textarea></label>
           <button class="btn btn-primary" type="submit">Book a workflow review</button>
+          <a class="btn btn-ghost wa-link" data-wa hidden target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+            Chat on WhatsApp
+          </a>
           <p class="form-msg" id="form-msg" role="status"></p>
         </form>
       </div>
@@ -945,11 +958,16 @@
   </div>
 </footer>
 
+<!-- Set data-whatsapp to the business WhatsApp number in international format, digits only (e.g. 6591234567). Buttons stay hidden while it is empty. -->
+<a class="wa-float" id="wa-float" data-wa data-whatsapp="6596328853" hidden target="_blank" rel="noopener" aria-label="Chat with CutCost AI on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+</a>
+
 <script>
   // Pricing constants (S$, inclusive of 9% GST)
   const SETUP = 4903.91;
   const MONTHLY = 543.91;
-  const YEAR1_COST = 9887.92; // year 1 CutCost AI cost per module, as stated in the pitch deck
+  const YEAR1_COST = SETUP + MONTHLY * 11; // setup + 11 paid months (month 1 is free)
 
   const money = (n, dp = 2) => (n < 0 ? "-" : "") + "S$" + Math.abs(n).toLocaleString("en-SG", { minimumFractionDigits: dp, maximumFractionDigits: dp });
   const plain = (n) => n.toLocaleString("en-SG", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -982,7 +1000,7 @@
   // Scale bars
   const bars = document.getElementById("bars");
   for (let n = 1; n <= 6; n++) {
-    const v = 26000 * n;
+    const v = Math.round((3000 * 12 - YEAR1_COST) * n);
     const row = document.createElement("div");
     row.className = "bar";
     row.innerHTML = `<span>${n} module${n > 1 ? "s" : ""}</span><div class="track"><div class="fill" style="width:${(n / 6) * 100}%"></div></div><b>${v.toLocaleString("en-SG")}</b>`;
@@ -1009,7 +1027,7 @@
     const rNet = document.getElementById("r-net");
     rNet.textContent = money(net);
     rNet.classList.toggle("neg", net < 0);
-    document.getElementById("r-pct").textContent = Math.max(0, Math.floor((net / manpower) * 100)) + "%";
+    document.getElementById("r-pct").textContent = Math.max(0, Math.round((net / manpower) * 100)) + "%";
     document.getElementById("r-y2").textContent = money(y2);
   }
   salary.addEventListener("input", calc);
@@ -1043,6 +1061,16 @@
     msg.style.color = "var(--teal)";
     msg.textContent = "Opening your email app to send the enquiry…";
   });
+
+  // WhatsApp buttons: shown only once a number is configured on #wa-float
+  const waNumber = (document.getElementById("wa-float").dataset.whatsapp || "").replace(/\D/g, "");
+  if (waNumber) {
+    const waText = encodeURIComponent("Hi CutCost AI, I'd like to find out more about automating order taking and quotations.");
+    document.querySelectorAll("[data-wa]").forEach((a) => {
+      a.href = `https://wa.me/${waNumber}?text=${waText}`;
+      a.hidden = false;
+    });
+  }
 
   // Reveal on scroll
   const io = "IntersectionObserver" in window ? new IntersectionObserver((entries) => {
